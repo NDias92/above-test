@@ -1,19 +1,14 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+// src/apolloClient.ts
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_API_URL, // Defina esta URL nas variáveis de ambiente
-  headers: {
-    "x-api-key": process.env.REACT_APP_API_KEY, // Defina a chave API
-  },
+  link: new HttpLink({
+    uri: "https://qzdu2mazrzfr3pvzuv6z5txkji.appsync-api.us-east-1.amazonaws.com/graphql",
+    headers: {
+      "x-api-key": process.env.REACT_APP_GRAPHQL_API_KEY || "", // API Key para autenticação
+    },
+  }),
   cache: new InMemoryCache(),
 });
 
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      {/* Componentes da sua aplicação */}
-    </ApolloProvider>
-  );
-}
-
-export default App;
+export default client;
