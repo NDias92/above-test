@@ -1,5 +1,6 @@
 // src/components/CreateEpisode.tsx
 import React, { useState } from "react";
+import "./styles/CreateEpisode.scss";
 
 interface Episode {
   id: string;
@@ -123,7 +124,11 @@ const CreateEpisode: React.FC<CreateEpisodeProps> = ({
           onChange={(e) => setImdbId(e.target.value)}
           required
         />
-        <button type="submit">Criar Episódio</button>
+        <div className="flex">
+          <button className="btn" type="submit">
+            Create Episode
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 // src/components/EpisodeList.tsx
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import "./styles/EpisodeList.css";
+import "./styles/EpisodeList.scss";
 
 interface Episode {
   id: string;
@@ -54,18 +54,21 @@ const EpisodeList: React.FC<EpisodeListProps> = ({ episodes }) => {
           className="search-bar"
         />
       </div>
-      <ul className="episode-list">
-        {filteredEpisodes.length > 0 ? (
-          filteredEpisodes.map((episode) => (
-            <li key={episode.id} className="episode-item">
-              {highlightMatch(episode.series)} - {highlightMatch(episode.title)}{" "}
-              (S{episode.seasonNumber}, E{episode.episodeNumber})
-            </li>
-          ))
-        ) : (
-          <li className="no-results">Nenhum episódio encontrado.</li>
-        )}
-      </ul>
+      <div className="flex">
+        <ul className="episode-list">
+          {filteredEpisodes.length > 0 ? (
+            filteredEpisodes.map((episode) => (
+              <li key={episode.id} className="episode-item">
+                {highlightMatch(episode.series)} -{" "}
+                {highlightMatch(episode.title)} (S{episode.seasonNumber}, E
+                {episode.episodeNumber})
+              </li>
+            ))
+          ) : (
+            <li className="no-results">No episode was found!</li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };

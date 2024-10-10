@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import EpisodeList from "./components/EpisodeList";
 import CreateEpisode from "./components/CreateEpisode";
+import logo from "./img/movie-logo.png";
+import "./App.scss";
 
 interface Episode {
   id: string;
@@ -41,10 +43,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>Gerenciador de Episódios de TV</h1>
-      {/* Passa a lista de episódios existentes para o CreateEpisode */}
+      <div className="flex">
+        <img src={logo} className="logo-image" />
+      </div>
       <CreateEpisode episodes={episodes} addEpisode={addEpisode} />
-      {/* Passa a lista de episódios para o EpisodeList */}
       <EpisodeList episodes={episodes} />
     </div>
   );

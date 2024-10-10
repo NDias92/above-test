@@ -1,0 +1,23 @@
+@import "./vars.scss";
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .btn {
+    padding: 25px;
+    background-color: $primary-color;
+    width: 200px;
+    &:hover {
+      background-color: $secondary-color;
+      border-color: $primary-color;
+    }
+  }
+}
