@@ -39,7 +39,14 @@ There should only be two inputs, so the search can focus on looking by name and/
 
 [OMDB Search Idea](./src/img/OMDB-search-image.png)
 
-the information received should be displayed on a tabled, where the image should be the main focus and the information received on the table field
+the information received should be displayed on a tabled, where the image should be the main focus and the information received on the table field.
+
+The git project should work on both GraphQL and Locally (the main branch was developed to work with both API and GraphQL requested and to see how it's working in local mode the branch to do so is localTesting).
+
+<div align="center" style="border: 2px solid black; padding: 20px; width: 200px; margin: 0 auto;">
+  <p><strong>THANK YOU SO MUCH FOR THE OPPORTUNITY AND HOPE TO TALK SOON</strong></p>
+    <p><strong>NADIA DIAS</strong></p>
+</div>
 
 # Getting Started with Create React App
 
