@@ -1,0 +1,11 @@
+@import "./global.scss";
+
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  &:hover {
+    background-color: $secondary-color;
+  }
+}

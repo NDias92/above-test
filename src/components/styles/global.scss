@@ -1,0 +1,86 @@
+$primary-color: #f4ba66;
+$secondary-color: #e4a14357;
+$third-color: #41260083;
+$fourth-color: #911612c2;
+$fifth-color: #ccc;
+$error-color: #c2282383;
+
+//items
+
+body,
+input,
+button,
+textarea,
+li,
+h1,
+h2,
+h3 {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+input,
+li,
+textarea {
+  width: 400px;
+  padding: 15px;
+  border: 1px solid $fifth-color;
+  border-radius: 4px;
+}
+
+button {
+  border: 1px solid $fifth-color;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  background-color: $primary-color;
+  width: 200px;
+  color: black;
+  &:hover {
+    background-color: $secondary-color;
+    border-color: $primary-color;
+    color: black;
+  }
+}
+
+//classes
+
+.flex {
+  display: flex;
+  justify-content: center;
+  padding: 0px 10px;
+  gap: 10px;
+  &--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+
+.form-episode {
+  &--search,
+  &--omdb,
+  &--update,
+  &--create {
+    max-width: 500px;
+    input {
+      margin: 10px 0px;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background-color: white;
+    }
+  }
+}

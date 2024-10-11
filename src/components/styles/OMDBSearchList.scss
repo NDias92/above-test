@@ -1,0 +1,15 @@
+@import "./global.scss";
+
+.movie-details {
+  &--title,
+  &--plot {
+    vertical-align: baseline;
+  }
+  &--title {
+    font-weight: bolder;
+    width: 50px;
+  }
+  td {
+    padding: 10px;
+  }
+}

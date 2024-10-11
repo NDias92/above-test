@@ -1,0 +1,28 @@
+import { gql } from "@apollo/client";
+
+export const LIST_EPISODES = gql`
+  query ListEpisodes($search: String) {
+    listEpisodes(search: $search) {
+      id
+      series
+      title
+      seasonNumber
+      episodeNumber
+    }
+  }
+`;
+
+export const GET_EPISODE_BY_ID = gql`
+  query GetEpisodeById($episodeId: String!) {
+    getEpisodeById(episodeId: $episodeId) {
+      id
+      series
+      title
+      seasonNumber
+      episodeNumber
+      description
+      releaseDate
+      imdbId
+    }
+  }
+`;
