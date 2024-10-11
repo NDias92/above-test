@@ -63,7 +63,7 @@ const App: React.FC = () => {
 
     if (filtered.length === 0) {
       const create = window.confirm(
-        "Unable to find episode. Do you whish to add it to the list?"
+        "Unable to find episode. Do you wish to add it to the list?"
       );
       if (create) {
         setInitialValues({
