@@ -1,7 +1,5 @@
-// src/components/OMDBEpisodeDetails.tsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../App.css";
 
 interface EpisodeDetails {
   Title: string;
@@ -26,7 +24,7 @@ const OMDBEpisodeDetails = ({ imdbId }: { imdbId: string }) => {
         setEpisodeDetails(response.data);
         setLoading(false);
       } catch (err) {
-        setError("Erro ao buscar os detalhes do episódio.");
+        setError("Error - couldn't find episode details");
         setLoading(false);
       }
     };
@@ -34,13 +32,8 @@ const OMDBEpisodeDetails = ({ imdbId }: { imdbId: string }) => {
     fetchEpisodeDetails();
   }, [imdbId]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="episode-details">
@@ -49,7 +42,11 @@ const OMDBEpisodeDetails = ({ imdbId }: { imdbId: string }) => {
           <h2>
             {episodeDetails.Title} ({episodeDetails.Year})
           </h2>
-          <img src={episodeDetails.Poster} alt={episodeDetails.Title} />
+          <img
+            src={episodeDetails.Poster}
+            alt={episodeDetails.Title}
+            style={{ width: "150px" }}
+          />
           <p>{episodeDetails.Plot}</p>
         </div>
       )}

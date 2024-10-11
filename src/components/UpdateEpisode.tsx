@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { EpisodeInput } from "../types/Episode";
-import "./styles/CreateEpisode.scss";
+import React, { useState } from "react";
+import { Episode } from "../types/Episode";
+import "./styles/UpdateEpisode.scss";
 
-interface CreateEpisodeProps {
-  onEpisodeAdded: (episode: EpisodeInput) => void;
-  initialValues?: EpisodeInput;
+interface UpdateEpisodeProps {
+  episode: Episode;
+  onEpisodeUpdated: (episode: Episode) => void;
+  onDelete: (id: string) => void;
 }
 
-const CreateEpisode: React.FC<CreateEpisodeProps> = ({
-  onEpisodeAdded,
-  initialValues,
+const UpdateEpisode: React.FC<UpdateEpisodeProps> = ({
+  episode,
+  onEpisodeUpdated,
+  onDelete,
 }) => {
-  const [title, setTitle] = useState("");
-  const [series, setSeries] = useState("");
-  const [description, setDescription] = useState("");
-  const [seasonNumber, setSeasonNumber] = useState(1);
-  const [episodeNumber, setEpisodeNumber] = useState(1);
-  const [releaseDate, setReleaseDate] = useState("");
-  const [imdbId, setImdbId] = useState("");
-
-  useEffect(() => {
-    if (initialValues) {
-      setTitle(initialValues.title || "");
-      setSeries(initialValues.series || "");
-      setDescription(initialValues.description || "");
-      setSeasonNumber(initialValues.seasonNumber || 1);
-      setEpisodeNumber(initialValues.episodeNumber || 1);
-      setReleaseDate(initialValues.releaseDate || "");
-      setImdbId(initialValues.imdbId || "");
-    }
-  }, [initialValues]);
+  const [title, setTitle] = useState(episode.title);
+  const [series, setSeries] = useState(episode.series);
+  const [description, setDescription] = useState(episode.description);
+  const [seasonNumber, setSeasonNumber] = useState(episode.seasonNumber);
+  const [episodeNumber, setEpisodeNumber] = useState(episode.episodeNumber);
+  const [releaseDate, setReleaseDate] = useState(episode.releaseDate);
+  const [imdbId, setImdbId] = useState(episode.imdbId);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newEpisode: EpisodeInput = {
+    const updatedEpisode: Episode = {
+      ...episode,
       title,
       series,
       description,
@@ -42,23 +33,21 @@ const CreateEpisode: React.FC<CreateEpisodeProps> = ({
       releaseDate,
       imdbId,
     };
-    onEpisodeAdded(newEpisode);
-    clearForm();
+    onEpisodeUpdated(updatedEpisode);
   };
 
-  const clearForm = () => {
-    setTitle("");
-    setSeries("");
-    setDescription("");
-    setSeasonNumber(1);
-    setEpisodeNumber(1);
-    setReleaseDate("");
-    setImdbId("");
+  const handleDelete = () => {
+    const confirmation = window.confirm(
+      "Do you wish to delete this episode from the list?"
+    );
+    if (confirmation) {
+      onDelete(episode.id);
+    }
   };
 
   return (
-    <form className="form-episode--create" onSubmit={handleSubmit}>
-      <h3>Create a new Episode</h3>
+    <form className="form-episode--update" onSubmit={handleSubmit}>
+      <h3>Update Episode</h3>
       <div>
         <input
           type="text"
@@ -106,7 +95,7 @@ const CreateEpisode: React.FC<CreateEpisodeProps> = ({
       <div>
         <input
           type="date"
-          placeholder="Day of Launch"
+          placeholder="Release Date"
           value={releaseDate}
           onChange={(e) => setReleaseDate(e.target.value)}
           required
@@ -122,10 +111,21 @@ const CreateEpisode: React.FC<CreateEpisodeProps> = ({
         />
       </div>
       <div>
-        <button type="submit">Create Episode</button>
+        <button className="form-button--update" type="submit">
+          Update
+        </button>
+      </div>
+      <div>
+        <button
+          className="form-button--delete"
+          type="button"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
       </div>
     </form>
   );
 };
 
-export default CreateEpisode;
+export default UpdateEpisode;

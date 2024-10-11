@@ -1,7 +1,5 @@
-// src/graphql/queries.ts
 import { gql } from "@apollo/client";
 
-// Query para listar episódios
 export const LIST_EPISODES = gql`
   query ListEpisodes($search: String) {
     listEpisodes(search: $search) {
@@ -14,7 +12,6 @@ export const LIST_EPISODES = gql`
   }
 `;
 
-// Query para obter detalhes de um episódio
 export const GET_EPISODE_BY_ID = gql`
   query GetEpisodeById($episodeId: String!) {
     getEpisodeById(episodeId: $episodeId) {

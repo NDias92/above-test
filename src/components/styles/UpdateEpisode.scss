@@ -1,0 +1,34 @@
+@import "./global.scss";
+
+.form {
+  &-episode--update {
+    input,
+    textarea {
+      width: 400px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+  &-button {
+    &--delete {
+      background-color: $error-color;
+      &:hover {
+        background-color: $fourth-color;
+        border-color: $primary-color;
+        color: white;
+      }
+    }
+    &--update {
+      padding: 25px;
+      margin: 10px;
+      background-color: $primary-color;
+      width: 200px;
+      &:hover {
+        background-color: $secondary-color;
+        border-color: $primary-color;
+        color: black;
+      }
+    }
+  }
+}

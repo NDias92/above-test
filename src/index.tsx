@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/client";
-import client from "./services/graphql"; // importe o cliente Apollo
+import client from "./apolloCient"; // importe o cliente Apollo
 import App from "./App";
 
 ReactDOM.render(
